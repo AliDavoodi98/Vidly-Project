@@ -7,7 +7,19 @@ var genres = [
     'comedy',
     'romance',
     'SciFi'
-]
+];
+
+app.use(express.json());
+
+app.use((req, res, next) => {
+    console.log('Logging ...');
+    next();
+});
+
+app.use((req, res, next) =>{
+    console.log('Authenticating ...');
+    next();
+});
 
 app.get('/api/genres', (req, res)=>{
     res.send(genres);
@@ -22,7 +34,7 @@ app.put('/api/genres', (req, res) => {
     } else {
         res.status(400).send({ error: 'Genre is not stated'});
     }
-})
+});
 
 app.delete('/api/genres', (req, res) =>{
     const removeGenre = req.query.genre;
@@ -34,7 +46,7 @@ app.delete('/api/genres', (req, res) =>{
           }
         res.send(genres)
     }
-})
+});
 
 const port = 3000;
 app.listen(port, ()=>{
