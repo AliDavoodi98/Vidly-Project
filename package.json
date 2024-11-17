@@ -9,7 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "config": "^3.3.12",
     "express": "^4.21.1",
-    "nodemon": "^3.1.7"
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "pug": "^3.0.3"
   }
 }
