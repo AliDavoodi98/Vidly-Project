@@ -2,8 +2,10 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const app = new express();
+exports.app = app;
 const config = require('config');
-const router = require('./router')
+const router = require('./routes/router');
+const home = require('./routes/home');
 
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 console.log(`app: ${app.get('env')}`);
@@ -30,9 +32,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res)=>{
-    res.render('index', {title:"page1", message:"Hello"});
-})
+app.use('/', home);
 
 const port = 3000;
 app.listen(port, ()=> {
