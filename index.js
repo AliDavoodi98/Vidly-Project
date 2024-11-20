@@ -6,7 +6,7 @@ exports.app = app;
 const config = require('config');
 const router = require('./routes/router');
 const home = require('./routes/home');
-const logger = require('./logger'); 
+const logger = require('./middleware/logger'); 
 
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 console.log(`app: ${app.get('env')}`);
