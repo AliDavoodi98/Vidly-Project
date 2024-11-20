@@ -2,12 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 // 
+var genres = [
+    'action',
+    'comedy',
+    'romance',
+    'SciFi'
+];
 
-router.get('/api/genres', (req, res)=> {
+router.get('/', (req, res)=> {
     res.send(genres);
 });
 
-router.put('/api/genres', (req, res) => {
+router.put('/', (req, res) => {
     const newGenre = req.query.genre;
 
     if(newGenre){
@@ -18,7 +24,7 @@ router.put('/api/genres', (req, res) => {
     }
 });
 
-router.delete('/api/genres', (req, res) => {
+router.delete('/', (req, res) => {
     const removeGenre = req.query.genre;
 
     if(removeGenre){
@@ -28,11 +34,6 @@ router.delete('/api/genres', (req, res) => {
           }
         res.send(genres);
     }
-});
-
-const port = 3000;
-router.listen(port, ()=> {
-    console.log(`Listening on Port ${port}`)
 });
 
 module.exports = router;
