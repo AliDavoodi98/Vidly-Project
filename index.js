@@ -6,6 +6,7 @@ exports.app = app;
 const config = require('config');
 const router = require('./routes/router');
 const home = require('./routes/home');
+const logger = require('./logger'); 
 
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 console.log(`app: ${app.get('env')}`);
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', home);
+app.use(logger);
 
 const port = 3000;
 app.listen(port, ()=> {
